@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+
+use App\Http\Controllers\ProductGalleryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\DashboardController@index');
+Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+
+Auth::routes(['register' => false]);
+
+Route::get('/', 'Resources\views\pages\products\gallery', 'ProductController@gallery')->name('products.gallery');
+
+Route::resource('products', ProductController::class);
+Route::resource('product-galleries', ProductGalleryController::class);
+
