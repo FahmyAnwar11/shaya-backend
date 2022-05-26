@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\ProductGalleryController;
-
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +21,14 @@ Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboa
 
 Auth::routes(['register' => false]);
 
-Route::get('/', 'Resources\views\pages\products\gallery', 'ProductController@gallery')->name('products.gallery');
+// Route::get('Resources\views\pages\products\{id}\gallery', 'ProductController@gallery')->name('products.gallery');
+// Route::get('Resources\views\pages\transactions\{id}\set-status', 'TransactionController@setStatus')->name('transactions.status');
 
+
+
+Route::get('/products/{id}/gallery', [ProductController::class, 'gallery'])->name('products.gallery');
 Route::resource('products', ProductController::class);
 Route::resource('product-galleries', ProductGalleryController::class);
+Route::get('/transactions/{id}/set-status', [TransactionController::class, 'setStatus'])->name('transactions.status');
+Route::resource('transactions', TransactionController::class);
 

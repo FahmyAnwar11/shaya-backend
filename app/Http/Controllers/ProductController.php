@@ -68,7 +68,7 @@ class ProductController extends Controller
         $item = product::findOrFail($id);
 
         return view('pages.products.gallery')->with([
-            'product' => $product_galery,
+            'product' => $product_gallery,
             'item' => $item
         ]);
     }
@@ -118,6 +118,21 @@ class ProductController extends Controller
         $item = Product::findOrFail($id);
         $item->delete();
 
+        ProductGallery::where('products_id', $id)->delete();
+
         return redirect()->route('products.index');
+    }
+
+    public function gallery(Request $request, $id)
+    {
+        $product = product::findOrFail($id);
+        $items = ProductGallery::with('product')
+            ->where('products_id')
+            ->get();
+            
+        return view('pages.products.gallery')->with([
+            'product' => $product,
+            'items' => $items
+        ]);
     }
 }

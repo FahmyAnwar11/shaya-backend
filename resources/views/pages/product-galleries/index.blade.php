@@ -27,7 +27,7 @@
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->product->name }}</td>
                                                 <td>
-                                                    <img src="/storage/asset/image/' . $item->photo) }}" alt="" >
+                                                    <img src="/storage/{{ $item->photo }}" alt="" >
                                                 </td>  
                                                 <td>{{ $item->is_default ? 'ya' : 'tidak' }}</td>
                                                 <td>

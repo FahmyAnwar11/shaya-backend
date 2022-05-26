@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="h4 box-title">
-                            <h4>Daftar Foto Barang <small>"{{}}"</small> </h4>
+                            <h4>Daftar Foto Barang <small>"{{ $product->name}}"</small></h4>
                         </div>
                         <div class="card-body--">
                             <div class="table-stats order-table ov-h">
